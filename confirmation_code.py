@@ -1,5 +1,5 @@
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions
 
 # no modificar
 def retrieve_phone_code(driver) -> str:
@@ -28,3 +28,10 @@ def retrieve_phone_code(driver) -> str:
                             "Utiliza 'retrieve_phone_code' solo después de haber solicitado el código en tu aplicación.")
         return code
 
+# Espera hasta que el elemento sea clickeable
+def wait_to_be_clickable_of_element(driver, element,w_time):
+    WebDriverWait(driver, w_time).until(expected_conditions.element_to_be_clickable(element))
+
+# Espera hasta que el elemento sea visible
+def wait_visibility_of_element(driver, element,w_time):
+    WebDriverWait(driver, w_time).until(expected_conditions.visibility_of_element_located(element))
